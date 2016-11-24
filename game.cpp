@@ -1,28 +1,34 @@
 #include <stdio.h>
-#include <allegro5/allegro.h>
- 
-int main(int argc, char **argv){
- 
-   ALLEGRO_DISPLAY *display = NULL;
- 
-   if(!al_init()) {
-      fprintf(stderr, "failed to initialize allegro!\n");
-      return -1;
-   }
- 
-   display = al_create_display(640, 480);
-   if(!display) {
-      fprintf(stderr, "failed to create display!\n");
-      return -1;
-   }
- 
-   al_clear_to_color(al_map_rgb(0,0,0));
- 
-   al_flip_display();
- 
-   al_rest(10.0);
- 
-   al_destroy_display(display);
- 
-   return 0;
+#include <iostream>
+
+using namespace std;
+
+const int max_X = 10;
+const int max_Y = 20;
+
+auto Field = new char[max_X][max_Y];
+
+void printField() {
+	for(int x = 0; x < max_X; x++) {
+		for(int y = 0; y < max_Y; y++) {
+			cout << Field[x][y];
+		} 
+		cout << endl;
+	}
+}
+void init() {
+	for(int x = 0; x < max_X; x++) {
+		for(int y = 0; y < max_Y; y++) {
+			Field[x][y] = ' ';
+		} 
+	}
+}
+
+int main() {
+	init();
+
+
+	printField();
+
+
 }
